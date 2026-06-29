@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  redis:
+    image: redis:7.0-alpine
+    ports:
+      - "6379:6379"
+    command: ["redis-server", "--appendonly", "yes"]
+
+  postgres:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_USER: bms_user
+      POSTGRES_PASSWORD: bms_password
+      POSTGRES_DB: bookmyshow
+    ports:
+      - "5432:5432"
